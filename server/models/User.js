@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema(
         },
         accountType: {
             type: String,
-            enum: ["Admin", "Student", "Instructer"],
+            enum: ["Admin", "Student", "Instructor"],
             required: true
         },
         active: {

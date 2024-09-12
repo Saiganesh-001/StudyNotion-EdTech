@@ -55,6 +55,7 @@ exports.signup = async (req, res) => {
 			});
 		}
 
+
 		// Find the most recent OTP for the email
 		const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
 		console.log(response);
@@ -142,7 +143,7 @@ exports.login = async (req, res) => {
 		// Generate JWT token and Compare Password
 		if (await bcrypt.compare(password, user.password)) {
 			const token = jwt.sign(
-				{ email: user.email, id: user._id, role: user.role },
+				{ email: user.email, id: user._id, accountType: user.accountType },
 				process.env.JWT_SECRET,
 				{
 					expiresIn: "24h",
