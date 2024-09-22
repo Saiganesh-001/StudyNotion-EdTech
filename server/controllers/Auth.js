@@ -127,10 +127,11 @@ exports.login = async (req, res) => {
 				message: `Please Fill up All the Required Fields`,
 			});
 		}
-
+		
 		// Find user with provided email
 		const user = await User.findOne({ email }).populate("additionalDetails");
-
+		
+		console.log(user)
 		// If user not found with provided email
 		if (!user) {
 			// Return 401 Unauthorized status code with error message
