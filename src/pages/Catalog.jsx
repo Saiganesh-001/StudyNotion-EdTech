@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router";
 import { useState } from "react";
 import { categories } from "../services/apis";
-import { apiConnector } from "../services/apiConnector";
+import { apiConnector } from "../services/apiconnector";
 import { useEffect } from "react";
 import CourseSlider from "../components/core/Catalog/CourseSlider";
 import { getCatalogaPageData } from "../services/operations/pageAndComponentData";

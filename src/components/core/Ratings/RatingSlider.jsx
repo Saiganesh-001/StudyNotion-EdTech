@@ -18,7 +18,7 @@ import Skeleton, {
 import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect, useState } from "react";
 import { ratingsEndpoints } from "../../../services/apis";
-import { apiConnector } from "../../../services/apiConnector";
+import { apiConnector } from "../../../services/apiconnector";
 import RatingStars from "../../common/RatingStars";
 
 const RatingSlider = () => {

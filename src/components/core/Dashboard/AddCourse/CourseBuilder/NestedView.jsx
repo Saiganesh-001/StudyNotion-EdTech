@@ -8,7 +8,7 @@ import { VscTrash } from "react-icons/vsc";
 import { VscTriangleDown } from "react-icons/vsc";
 import { useState } from "react";
 import ConfirmationModal from "../../../../common/ConfirmationModal";
-import SubSectionModal from "./SubsectionModal";
+import SubSectionModal from "./SubSectionModal";
 import {
 	deleteSection,
 	deleteSubSection,
