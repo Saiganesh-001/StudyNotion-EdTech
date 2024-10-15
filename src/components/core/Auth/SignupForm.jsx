@@ -11,6 +11,7 @@ import { sendOtp } from "../../../services/operations/authAPI";
 import { setSignupData } from "../../../slices/authSlice";
 import { ACCOUNT_TYPE } from "../../../utils/constants";
 import Tab from "../../common/Tab";
+import { setProgress } from "../../../slices/loadingBarSlice";
 
 function SignupForm() {
 	const navigate = useNavigate();
@@ -259,6 +260,9 @@ function SignupForm() {
 				</div>
 				<button
 					type="submit"
+					onClick={() => {
+						dispatch(setProgress(60));
+					}}
 					className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900">
 					Create Account
 				</button>

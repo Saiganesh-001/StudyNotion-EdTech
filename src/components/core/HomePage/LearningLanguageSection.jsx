@@ -3,7 +3,7 @@ import HighlightText from "./HighlightText";
 import know_your_progress from "../../../assets/Images/Know_your_progress.png";
 import compare_with_others from "../../../assets/Images/Compare_with_others.png";
 import plan_your_lesson from "../../../assets/Images/Plan_your_lessons.png";
-import CTAButton from "../HomePage/Button";
+import CTAButton from "./Button";
 
 const LearningLanguageSection = () => {
 	return (
@@ -23,11 +23,11 @@ const LearningLanguageSection = () => {
 					custom schedule and more.
 				</div>
 
-				<div className="flex flex-row items-center justify-center mt-5">
+				<div className="flex flex-col lg:flex-row items-center justify-center mt-5">
 					<img
 						src={know_your_progress}
 						alt="KNowYourProgressImage"
-						className="object-contain -mr-32 "
+						className="object-contain md:-mr-32 "
 					/>
 					<img
 						src={compare_with_others}
@@ -37,7 +37,7 @@ const LearningLanguageSection = () => {
 					<img
 						src={plan_your_lesson}
 						alt="KNowYourProgressImage"
-						className="object-contain -ml-36"
+						className="object-contain md:-ml-36"
 					/>
 				</div>
 

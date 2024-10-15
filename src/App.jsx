@@ -1,73 +1,88 @@
 import "./App.css";
-import {
-	Route,
-	Routes,
-	useNavigate,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Navbar from "./components/common/Navbar";
-import OpenRoute from "./components/core/Auth/OpenRoute";
-
+import NavBar from "./Components/common/NavBar";
+import Footer from "./Components/common/Footer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
-import UpdatePassword from "./pages/UpdatePassword";
-import VerifyEmail from "./pages/VerifyEmail";
+import ResetPassword from "./pages/ResetPassword";
+import VerifyOtp from "./pages/VerifyOtp";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
-import MyProfile from "./components/core/Dashboard/MyProfile";
+import ContactUs from "./pages/ContactUs";
+import LoadingBar from "react-top-loading-bar";
+import { setProgress } from "./slices/loadingBarSlice";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Dashboard from "./pages/Dashboard";
-import PrivateRoute from "./components/core/Auth/PrivateRoute";
-import Error from "./pages/Error";
-import Settings from "./components/core/Dashboard/Settings";
-import {
-	useDispatch,
-	useSelector,
-} from "react-redux";
-import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
-import Cart from "./components/core/Dashboard/Cart";
+import OpenRoute from "./Components/core/Auth/OpenRoute";
+import PrivateRoute from "./Components/core/Auth/PrivateRoute";
+import MyProfile from "./Components/core/Dashboard/MyProfile";
+import Setting from "./Components/core/Dashboard/Settings";
+import EnrollledCourses from "./Components/core/Dashboard/EnrolledCourses";
+import Cart from "./Components/core/Dashboard/Cart/index";
 import { ACCOUNT_TYPE } from "./utils/constants";
-import AddCourse from "./components/core/Dashboard/AddCourse";
-import MyCourses from "./components/core/Dashboard/MyCourses";
-import EditCourse from "./components/core/Dashboard/EditCourse";
+import AddCourse from "./Components/core/Dashboard/AddCourse/index";
+import MyCourses from "./Components/core/Dashboard/MyCourses/MyCourses";
+import EditCourse from "./Components/core/Dashboard/EditCourse/EditCourse";
 import Catalog from "./pages/Catalog";
+import ScrollToTop from "./Components/ScrollToTop";
 import CourseDetails from "./pages/CourseDetails";
+import SearchCourse from "./pages/SearchCourse";
+import ViewCourse from "./pages/ViewCourse";
+import VideoDetails from "./Components/core/ViewCourse/VideoDetails";
+import PurchaseHistory from "./Components/core/Dashboard/PurchaseHistory";
+import InstructorDashboard from "./Components/core/Dashboard/InstructorDashboard/InstructorDashboard";
+import { RiWifiOffLine } from "react-icons/ri";
+import AdminPannel from "./Components/core/Dashboard/AdminPannel";
 
 function App() {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	const { user } = useSelector(
-		(state) => state.profile
+	console.log = function () {};
+	const user = useSelector(
+		(state) => state.profile.user
 	);
-
+	const progress = useSelector(
+		(state) => state.loadingBar
+	);
+	const dispatch = useDispatch();
 	return (
-		<div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
-			<Navbar />
+		<div className=" w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
+			<LoadingBar
+				color="#FFD60A"
+				height={1.4}
+				progress={progress}
+				onLoaderFinished={() =>
+					dispatch(setProgress(0))
+				}
+			/>
+			<NavBar setProgress={setProgress}></NavBar>
+			{!navigator.onLine && (
+				<div className="bg-red-500 flex text-white text-center p-2 bg-richblack-300 justify-center gap-2 items-center">
+					<RiWifiOffLine size={22} />
+					Please check your internet connection.
+					<button
+						className="ml-2 bg-richblack-500 rounded-md p-1 px-2 text-white"
+						onClick={() =>
+							window.location.reload()
+						}>
+						Retry
+					</button>
+				</div>
+			)}
+			<ScrollToTop />
 			<Routes>
 				<Route
 					path="/"
 					element={<Home />}
 				/>
+
 				<Route
-					path="catalog/:catalogName"
+					path="/catalog/:catalog"
 					element={<Catalog />}
-				/>
-				<Route
-					path="courses/:courseId"
-					element={<CourseDetails />}
 				/>
 
 				<Route
-					path="signup"
-					element={
-						<OpenRoute>
-							<Signup />
-						</OpenRoute>
-					}
-				/>
-				<Route
-					path="login"
+					path="/login"
 					element={
 						<OpenRoute>
 							<Login />
@@ -76,43 +91,47 @@ function App() {
 				/>
 
 				<Route
-					path="forgot-password"
+					path="/signup"
 					element={
 						<OpenRoute>
-							<ForgotPassword />
+							<Signup />
 						</OpenRoute>
 					}
 				/>
 
 				<Route
-					path="verify-email"
-					element={
-						<OpenRoute>
-							<VerifyEmail />
-						</OpenRoute>
-					}
+					path="/forgot-password"
+					element={<ForgotPassword />}
 				/>
 
 				<Route
-					path="update-password/:id"
-					element={
-						<OpenRoute>
-							<UpdatePassword />
-						</OpenRoute>
-					}
+					path="/update-password/:id"
+					element={<ResetPassword />}
 				/>
 
 				<Route
-					path="about"
-					element={
-						<OpenRoute>
-							<About />
-						</OpenRoute>
-					}
+					path="/verify-email"
+					element={<VerifyOtp />}
 				/>
+
+				<Route
+					path="/about"
+					element={<About />}
+				/>
+
 				<Route
 					path="/contact"
-					element={<Contact />}
+					element={<ContactUs />}
+				/>
+
+				<Route
+					path="/courses/:courseId"
+					element={<CourseDetails />}
+				/>
+
+				<Route
+					path="/search/:searchQuery"
+					element={<SearchCourse />}
 				/>
 
 				<Route
@@ -126,10 +145,9 @@ function App() {
 						element={<MyProfile />}
 					/>
 					<Route
-						path="dashboard/Settings"
-						element={<Settings />}
+						path="dashboard/settings"
+						element={<Setting />}
 					/>
-
 					{user?.accountType ===
 						ACCOUNT_TYPE.STUDENT && (
 						<>
@@ -139,11 +157,14 @@ function App() {
 							/>
 							<Route
 								path="dashboard/enrolled-courses"
-								element={<EnrolledCourses />}
+								element={<EnrollledCourses />}
+							/>
+							<Route
+								path="dashboard/purchase-history"
+								element={<PurchaseHistory />}
 							/>
 						</>
 					)}
-
 					{user?.accountType ===
 						ACCOUNT_TYPE.INSTRUCTOR && (
 						<>
@@ -159,15 +180,46 @@ function App() {
 								path="dashboard/edit-course/:courseId"
 								element={<EditCourse />}
 							/>
+							<Route
+								path="dashboard/instructor"
+								element={<InstructorDashboard />}
+							/>
+						</>
+					)}
+					{user?.accountType ===
+						ACCOUNT_TYPE.ADMIN && (
+						<>
+							<Route
+								path="dashboard/admin-panel"
+								element={<AdminPannel />}
+							/>
+						</>
+					)}
+				</Route>
+
+				<Route
+					element={
+						<PrivateRoute>
+							<ViewCourse />
+						</PrivateRoute>
+					}>
+					{user?.accountType ===
+						ACCOUNT_TYPE.STUDENT && (
+						<>
+							<Route
+								path="/dashboard/enrolled-courses/view-course/:courseId/section/:sectionId/sub-section/:subsectionId"
+								element={<VideoDetails />}
+							/>
 						</>
 					)}
 				</Route>
 
 				<Route
 					path="*"
-					element={<Error />}
+					element={<Home />}
 				/>
 			</Routes>
+			<Footer />
 		</div>
 	);
 }

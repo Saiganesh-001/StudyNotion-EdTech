@@ -9,6 +9,8 @@ const {
   sendotp,
   changePassword,
 } = require("../controllers/Auth")
+
+const { isDemo } = require("../middlewares/demo");
 const {
   resetPasswordToken,
   resetPassword,
@@ -32,7 +34,7 @@ router.post("/signup", signup)
 router.post("/sendotp", sendotp)
 
 // Route for Changing the password
-router.post("/changepassword", auth, changePassword)
+router.post("/changepassword", auth, isDemo, changePassword)
 
 // ********************************************************************************************************
 //                                      Reset Password
@@ -45,4 +47,4 @@ router.post("/reset-password-token", resetPasswordToken)
 router.post("/reset-password", resetPassword)
 
 // Export the router for use in the main application
-module.exports = router
+module.exports = router;
