@@ -27,14 +27,17 @@ This project is intended as a learning tool and can be used as a sample project 
 
 ## Screenshots
 
-![Screenshot 2023-07-25 210844](https://github.com/Saiganesh-001/StudyNotion-EdTech/assets/99420590/0cba8d5b-6a47-4721-ac9f-4279107c257e)
-![Screenshot 2023-07-25 211309](https://github.com/Saiganesh-001/StudyNotion-EdTech/assets/99420590/62c33b56-0bd5-4330-b1db-d41b80d9f69f)
+<img width="1280" alt="Screenshot 2024-10-16 042131" src="https://github.com/user-attachments/assets/e1cc8dc4-7df2-4434-8d1f-af91015b9eee">
+<img width="1280" alt="Screenshot 2024-10-16 042158" src="https://github.com/user-attachments/assets/c05cafa0-3c6e-4434-a177-50ed0e67266c">
+
 
 <details>
   <summary>More screenshots</summary>
   
-![Screenshot 2023-07-25 211451](https://github.com/Saiganesh-001/StudyNotion-EdTech/assets/99420590/63f7163d-a74a-4e78-bc78-6b96b06073f9)
-![image](https://github.com/Saiganesh-001/StudyNotion-EdTech/assets/99420590/59d1d8c2-2824-45bb-a2f7-6f5dc234895c)
+<img width="1280" alt="Screenshot 2024-10-16 042221" src="https://github.com/user-attachments/assets/e12295e4-bc4f-4a1d-b775-494f55f4d501">
+<img width="1280" alt="Screenshot 2024-10-16 042239" src="https://github.com/user-attachments/assets/491f841a-bc40-42dc-b355-5a5beee10ff6">
+<img width="1280" alt="Screenshot 2024-10-16 042301" src="https://github.com/user-attachments/assets/dd041e46-a005-4832-9a74-5778fc4a90f9">
+
 </details>
 
 ---
@@ -56,7 +59,7 @@ This project is intended as a learning tool and can be used as a sample project 
 2. Install the required packages.
 
    ```sh
-   cd Study-Notion-master
+   cd StudyNotion-EdTech
    npm install
 
    cd server
