@@ -23,4 +23,4 @@ root.render(
     </BrowserRouter>
   </Provider>
 );
-swDev();
+// swDev();
