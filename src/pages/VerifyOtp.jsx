@@ -19,7 +19,7 @@ const VerifyOtp = () => {
 		if (!signupData) {
 			navigate("/signup");
 		}
-	}, []);
+	}, [signupData, navigate]);
 
 	const handleOnSubmit = (e) => {
 		e.preventDefault();

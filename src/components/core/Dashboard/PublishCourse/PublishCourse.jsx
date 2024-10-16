@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
-	setCourse,
 	setEditCourse,
 	setStep,
 } from "../../../../slices/courseSlice";
@@ -23,7 +22,6 @@ const PublishCourse = () => {
 		handleSubmit,
 		setValue,
 		getValues,
-		formState: { errors },
 	} = useForm();
 	const { token } = useSelector(
 		(state) => state.auth
@@ -41,7 +39,7 @@ const PublishCourse = () => {
 		) {
 			setValue("public", true);
 		}
-	}, []);
+	}, [course?.status, setValue]);
 
 	const goBack = () => {
 		dispatch(setStep(2));

@@ -12,8 +12,7 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 const VideoDetailsSidebar = ({
 	setReviewModal,
 }) => {
-	const [activeStatus, setActiveStatus] =
-		useState("");
+
 	const [videoActive, setVideoActive] =
 		useState("");
 	const { courseId, sectionId, subsectionId } =
@@ -21,7 +20,6 @@ const VideoDetailsSidebar = ({
 	// console.log("sectionId", sectionId, "SubSectionId", subsectionId);
 	const {
 		courseSectionData,
-		courseEntireData,
 		completedLectures,
 		totalNoOfLectures,
 	} = useSelector((state) => state.viewCourse);
@@ -54,9 +52,7 @@ const VideoDetailsSidebar = ({
 			const activesubsectionId =
 				courseSectionData[currentSectionIndex]
 					.subSection[currentSubSectionIndex]._id;
-			setActiveStatus(
-				courseSectionData[currentSectionIndex]._id
-			);
+
 			setVideoActive(activesubsectionId);
 			// console.log("activeSubsectionId", activesubsectionId);
 			// console.log("activeSectionId", courseSectionData[currentSectionIndex]._id);

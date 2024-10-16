@@ -25,6 +25,7 @@ const RenderCartCourses = () => {
 							<img
 								className="md:h-[148px] md:w-[220px] h-[100px] w-[180px] rounded-lg object-cover"
 								src={course?.thumbnail}
+								alt="thumnail"
 							/>
 						</Link>
 						<div className="flex flex-col space-y-1">

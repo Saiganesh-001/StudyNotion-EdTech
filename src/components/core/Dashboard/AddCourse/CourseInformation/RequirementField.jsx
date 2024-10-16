@@ -3,7 +3,6 @@ import React, {
 	useState,
 } from "react";
 import { useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
 
 const RequirementField = ({
 	name,
@@ -11,7 +10,6 @@ const RequirementField = ({
 	register,
 	errors,
 	setValue,
-	getValues,
 }) => {
 	const [requirement, setRequirement] =
 		useState("");
@@ -26,7 +24,7 @@ const RequirementField = ({
 			required: true,
 			// validate: (value) => value.length > 0
 		});
-	}, []);
+	}, []);	// eslint-disable-next-line
 
 	useEffect(() => {
 		setValue(name, requirementList);
@@ -34,7 +32,7 @@ const RequirementField = ({
 			setRequirementList(course?.instructions);
 			setValue(name, course?.instructions);
 		}
-	}, [requirementList]);
+	}, [requirementList]);	// eslint-disable-next-line
 
 	const handleAddRequirement = () => {
 		if (requirement) {

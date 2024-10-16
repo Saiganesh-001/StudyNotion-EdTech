@@ -32,7 +32,6 @@ const NavBar = ({ setProgress }) => {
 	);
 	const [prevScrollPos, setPrevScrollPos] =
 		useState(0);
-	const [visible, setVisible] = useState(true);
 	const [searchValue, setSearchValue] =
 		useState("");
 	const navigate = useNavigate();

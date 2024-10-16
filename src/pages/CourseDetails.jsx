@@ -64,7 +64,7 @@ const CourseDetails = () => {
 			setCourseDetail(response);
 		};
 		getCourseDetails();
-	}, [courseId]);
+	}, [courseId, dispatch]);
 
 	useEffect(() => {
 		if (

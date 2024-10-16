@@ -117,7 +117,9 @@ const Settings = () => {
 						<div className="flex items-center gap-x-4">
 							<img
 								className="aspect-square w-[78px] rounded-full object-cover"
-								src={profilePicture}></img>
+								src={profilePicture}
+								alt="profilePic">
+								</img>
 							<div className="space-y-2">
 								<p>Change Profile Picture</p>
 								<form onSubmit={handleUpload}>

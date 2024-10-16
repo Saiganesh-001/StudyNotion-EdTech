@@ -12,9 +12,6 @@ import {
 	Mousewheel,
 	Keyboard,
 } from "swiper";
-import Skeleton, {
-	SkeletonTheme,
-} from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useEffect, useState } from "react";
 import { ratingsEndpoints } from "../../../services/apis";
@@ -23,11 +20,9 @@ import RatingStars from "../../common/RatingStars";
 
 const RatingSlider = () => {
 	const [Reviews, setReviews] = useState([]);
-	const [Loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const getReviews = async () => {
-			setLoading(true);
 			try {
 				const res = await apiConnector(
 					"GET",
@@ -40,8 +35,6 @@ const RatingSlider = () => {
 					"LOGGING Review ERROR",
 					error
 				);
-			} finally {
-				setLoading(false);
 			}
 		};
 		getReviews();

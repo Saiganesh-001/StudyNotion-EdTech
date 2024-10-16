@@ -22,7 +22,7 @@ const MyCourses = () => {
 	};
 
 	useEffect(() => {
-		fetchedCourses();
+		fetchedCourses();	// eslint-disable-next-line
 	}, []);
 	return (
 		<div className="mx-auto w-11/12 max-w-[1000px] py-10">

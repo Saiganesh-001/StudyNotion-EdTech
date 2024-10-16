@@ -1,5 +1,4 @@
 import {
-	useDispatch,
 	useSelector,
 } from "react-redux";
 import {
@@ -11,10 +10,6 @@ import {
 	Tr,
 } from "react-super-responsive-table";
 
-import {
-	setCourse,
-	setEditCourse,
-} from "../../../../slices/courseSlice";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
@@ -35,7 +30,6 @@ export default function CoursesTable({
 	courses,
 	setCourses,
 }) {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { token } = useSelector(
 		(state) => state.auth
